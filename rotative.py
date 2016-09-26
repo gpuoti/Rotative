@@ -1,5 +1,6 @@
 from  sphinx.application import Sphinx
 import SCons.Builder
+import os
 
 """
 Rotative add to sphinx a really minimal scons interface that let you build your html
@@ -14,10 +15,10 @@ Here is a simple example:
 """
 
 def __build_the_doc(target, source, env):
-    doc_source = str(source[0])[:-8]
+    doc_source, conf_file = os.path.split(str(source[0]))
     conf_folder = doc_source
     out_folder = env['rotative']['out_folder']
-    doc_tree_folder = out_folder + '/' + env['rotative']['doctree_folder']
+    doc_tree_folder = out_folder + os.path.sep + env['rotative']['doctree_folder']
     doc_builder = 'html'
     builder = Sphinx( doc_source, conf_folder, out_folder, doc_tree_folder, doc_builder)
     builder.build()
