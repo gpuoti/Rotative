@@ -4,7 +4,7 @@ Rotative
 
 Rotative is a extremelly simple interface that let scons build html documentation from RestructuredText. The code required into your Sconstruct file is really minimal:
 
-.. code-block: python 
+.. code-block:: python 
 
     import rotative
 
